@@ -48,13 +48,14 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: -2;
-      background: 
+      z-index: -2; /* above background, below main panel */
+      background:
         radial-gradient(circle at 15% 20%, rgba(255,180,100,0.12), transparent 40%),
         radial-gradient(circle at 80% 25%, rgba(255,180,100,0.10), transparent 40%),
         radial-gradient(circle at 50% 70%, rgba(255,180,100,0.08), transparent 35%);
       background-repeat: no-repeat;
       background-size: cover;
+      mix-blend-mode: lighten; /* makes the glow visible on dark background */
       animation: flicker 4s infinite alternate ease-in-out;
     }
 
@@ -211,7 +212,7 @@
 
   <!-- Layers -->
   <div class="background"></div>
-  <div class="ambient-light"></div> <!-- now subtle torch glow -->
+  <div class="ambient-light"></div> <!-- now visible torch glow -->
   <div class="vines left"></div>
   <div class="vines right"></div>
 
