@@ -29,14 +29,11 @@
       background-image: var(--brick-url);
       background-size: 128px 128px;
       animation: pan 40s linear infinite;
-      filter: brightness(0.4) contrast(1.2); /* darker and contrasty */
+      filter: brightness(0.4) contrast(1.2);
       z-index: -5;
     }
 
-    @keyframes pan {
-      from { background-position: 0 0; }
-      to { background-position: 512px 0; }
-    }
+    @keyframes pan { from { background-position: 0 0; } to { background-position: 512px 0; } }
 
     /* =========================
        Gloom Overlay
@@ -68,10 +65,7 @@
     .fog-layer:nth-child(2) { top: 50%; animation-duration: 180s; opacity: 0.02; }
     .fog-layer:nth-child(3) { top: 70%; animation-duration: 200s; opacity: 0.018; }
 
-    @keyframes driftFog {
-      0% { transform: translateX(0) translateY(0); }
-      100% { transform: translateX(50px) translateY(-30px); }
-    }
+    @keyframes driftFog { 0% { transform: translateX(0) translateY(0); } 100% { transform: translateX(50px) translateY(-30px); } }
 
     /* =========================
        Torch Particles
@@ -134,11 +128,7 @@
       border-radius: 8px;
     }
 
-    @keyframes floatPanel {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
+    @keyframes floatPanel { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
 
     h1 { margin-top: 0; font-size: 2.2rem; color: #7cff7c; text-shadow: 0 0 8px rgba(0,255,0,0.4); }
     .tagline { font-size: 1.1rem; margin-bottom: 16px; color: #bbb; }
@@ -161,8 +151,9 @@
     .footer { margin-top: 18px; font-size: 0.85rem; opacity: 0.6; }
 
     /* =========================
-       Slide-Out Rules Panel
+       Slide-Out Panels
        ========================= */
+    /* Rules Panel - Right */
     .rules-tab {
       position: fixed;
       top: 50%;
@@ -198,9 +189,45 @@
     .rules-container:hover .rules-panel,
     .rules-container:hover .rules-tab { right: 0; }
 
-    .rules-panel h2 { margin-top: 0; color: #7cff7c; text-align: center; }
-    .rules-panel ul { padding-left: 18px; line-height: 1.6; font-size: 0.95rem; }
-    .rules-panel li { margin-bottom: 10px; }
+    /* Modlist Panel - Left */
+    .modlist-tab {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.75);
+      color: #eee;
+      padding: 10px 14px;
+      border: 3px solid #2a2a2a;
+      border-left: none;
+      cursor: pointer;
+      z-index: 10;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 2px;
+      font-weight: bold;
+      box-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+    .modlist-panel {
+      position: fixed;
+      top: 0;
+      left: -320px;
+      width: 320px;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      border-right: 4px solid #2a2a2a;
+      padding: 24px;
+      color: #ddd;
+      transition: left 0.35s ease;
+      z-index: 9;
+      box-shadow: 10px 0 25px rgba(0,0,0,0.8);
+    }
+    .modlist-container:hover .modlist-panel,
+    .modlist-container:hover .modlist-tab { left: 0; }
+
+    .rules-panel h2, .modlist-panel h2 { margin-top: 0; color: #7cff7c; text-align: center; }
+    .rules-panel ul, .modlist-panel ul { padding-left: 18px; line-height: 1.6; font-size: 0.95rem; }
+    .rules-panel li, .modlist-panel li { margin-bottom: 10px; }
 
   </style>
 </head>
@@ -225,7 +252,7 @@
     <div style="top:75%; left:85%; animation-duration: 6.5s;"></div>
   </div>
 
-  <!-- Slide-Out Rules -->
+  <!-- Slide-Out Rules (Right) -->
   <div class="rules-container">
     <div class="rules-tab">RULES</div>
     <div class="rules-panel">
@@ -237,6 +264,20 @@
         <li>Keep chat friendly and appropriate.</li>
         <li>Listen to staff and follow instructions.</li>
         <li>Have fun and play fair.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide-Out Modlist (Left) -->
+  <div class="modlist-container">
+    <div class="modlist-tab">MODS</div>
+    <div class="modlist-panel">
+      <h2>🛠 Server Mods</h2>
+      <ul>
+        <li>Simple Voice Chat</li>
+        <li>Waystones</li>
+        <li>Decocraft</li>
+        <li>Universal Graves</li>
       </ul>
     </div>
   </div>
