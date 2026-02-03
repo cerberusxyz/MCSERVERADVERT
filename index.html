@@ -42,25 +42,28 @@
     }
 
     /* =========================
-       Ambient Lighting
+       Ambient Torch Lighting
        ========================= */
     .ambient-light {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 25% 30%, rgba(255,180,80,0.15), transparent 70%),
-                  radial-gradient(circle at 75% 70%, rgba(255,180,80,0.15), transparent 70%),
-                  radial-gradient(circle at 50% 50%, rgba(200,180,255,0.08), transparent 70%);
-      animation: ambientFlicker 4s infinite alternate ease-in-out;
       pointer-events: none;
       z-index: -2;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(255,180,100,0.12), transparent 40%),
+        radial-gradient(circle at 80% 25%, rgba(255,180,100,0.10), transparent 40%),
+        radial-gradient(circle at 50% 70%, rgba(255,180,100,0.08), transparent 35%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: flicker 4s infinite alternate ease-in-out;
     }
 
-    @keyframes ambientFlicker {
-      0%   { opacity: 0.8; }
-      25%  { opacity: 0.9; }
-      50%  { opacity: 0.85; }
-      75%  { opacity: 0.95; }
-      100% { opacity: 0.88; }
+    @keyframes flicker {
+      0%   { opacity: 0.9; }
+      25%  { opacity: 0.92; }
+      50%  { opacity: 0.88; }
+      75%  { opacity: 0.93; }
+      100% { opacity: 0.89; }
     }
 
     /* =========================
@@ -103,7 +106,7 @@
       max-width: 700px;
       text-align: center;
       color: #e8e8e8;
-      box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 60px rgba(255,200,120,0.15) inset;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 60px rgba(255,200,120,0.08) inset;
       image-rendering: pixelated;
     }
 
@@ -200,6 +203,7 @@
     .rules-panel li {
       margin-bottom: 10px;
     }
+
   </style>
 </head>
 
@@ -207,7 +211,7 @@
 
   <!-- Layers -->
   <div class="background"></div>
-  <div class="ambient-light"></div> <!-- ambient lighting added -->
+  <div class="ambient-light"></div> <!-- now subtle torch glow -->
   <div class="vines left"></div>
   <div class="vines right"></div>
 
