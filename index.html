@@ -9,7 +9,6 @@
     :root {
       --brick-url: url("https://minecraft.wiki/images/Mossy_Stone_Bricks_%28texture%29_JE3_BE2.png?7159b");
       --vine-url: url("https://minecraft.wiki/w/File:Cave_Vines_(berries,_plant_texture)_JE2.png");
-      --page-url: url("https://minecraft.wiki/images/Writable_Book_%28texture%29_JE3_BE2.png");
     }
 
     * {
@@ -143,17 +142,17 @@
     }
 
     /* =========================
-       Book-Style Rules Panel
+       Slide-Out Rules Panel
        ========================= */
     .rules-tab {
       position: fixed;
       top: 50%;
       right: 0;
       transform: translateY(-50%);
-      background-color: #6b4423;
-      color: #f3e5c7;
+      background: rgba(0,0,0,0.85);
+      color: #eee;
       padding: 10px 14px;
-      border: 3px solid #3a240f;
+      border: 3px solid #5a5a5a;
       border-right: none;
       cursor: pointer;
       z-index: 10;
@@ -161,27 +160,22 @@
       text-orientation: mixed;
       letter-spacing: 2px;
       font-weight: bold;
-      box-shadow: 0 0 12px rgba(0,0,0,0.9);
-      opacity: 1;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
     }
 
     .rules-panel {
       position: fixed;
-      top: 50%;
-      right: -360px;
-      transform: translateY(-50%);
-      width: 360px;
-      height: 480px;
-      background-image: var(--page-url);
-      background-size: cover;
-      background-position: center;
-      border: 4px solid #3a240f;
-      padding: 32px 28px;
-      color: #3b2a16;
-      transition: right 0.4s ease;
+      top: 0;
+      right: -320px;
+      width: 320px;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      border-left: 4px solid #5a5a5a;
+      padding: 24px;
+      color: #ddd;
+      transition: right 0.35s ease;
       z-index: 9;
       box-shadow: -10px 0 25px rgba(0,0,0,0.8);
-      image-rendering: pixelated;
     }
 
     .rules-container:hover .rules-panel,
@@ -191,9 +185,8 @@
 
     .rules-panel h2 {
       margin-top: 0;
-      margin-bottom: 12px;
+      color: #7cff7c;
       text-align: center;
-      color: #3b2a16;
     }
 
     .rules-panel ul {
@@ -220,7 +213,7 @@
   <div class="rules-container">
     <div class="rules-tab">RULES</div>
     <div class="rules-panel">
-      <h2>Server Rules</h2>
+      <h2>📜 Server Rules</h2>
       <ul>
         <li>Be respectful — no harassment or hate speech.</li>
         <li>No griefing, stealing, or destroying builds.</li>
