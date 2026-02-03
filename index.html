@@ -29,8 +29,8 @@
       background-image: var(--brick-url);
       background-size: 128px 128px;
       animation: pan 40s linear infinite;
-      filter: brightness(0.5) contrast(1.1);
-      z-index: -4;
+      filter: brightness(0.4) contrast(1.2); /* darker and contrasty */
+      z-index: -5;
     }
 
     @keyframes pan {
@@ -39,32 +39,38 @@
     }
 
     /* =========================
-       Gloomy Overlay
+       Gloom Overlay
        ========================= */
     .gloom-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.1), rgba(0,0,0,0.6) 80%);
-      z-index: -3;
+      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.1), rgba(0,0,0,0.7) 80%);
+      z-index: -4;
       pointer-events: none;
     }
 
     /* =========================
-       Fog / Mist Animation
+       Drifting Fog
        ========================= */
-    .fog {
+    .fog-layer {
       position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.02), transparent 60%),
-                  radial-gradient(circle at 70% 70%, rgba(255,255,255,0.02), transparent 50%);
-      z-index: -2;
+      width: 200%;
+      height: 60%;
+      top: 20%;
+      left: -50%;
+      background: rgba(255,255,255,0.02);
+      filter: blur(50px);
+      z-index: -3;
       pointer-events: none;
-      animation: drift 60s linear infinite;
+      animation: driftFog 120s linear infinite;
     }
+    .fog-layer:nth-child(1) { top: 10%; animation-duration: 150s; opacity: 0.015; }
+    .fog-layer:nth-child(2) { top: 50%; animation-duration: 180s; opacity: 0.02; }
+    .fog-layer:nth-child(3) { top: 70%; animation-duration: 200s; opacity: 0.018; }
 
-    @keyframes drift {
-      0%   { background-position: 0 0, 0 0; }
-      100% { background-position: 200px 50px, -150px -80px; }
+    @keyframes driftFog {
+      0% { transform: translateX(0) translateY(0); }
+      100% { transform: translateX(50px) translateY(-30px); }
     }
 
     /* =========================
@@ -79,7 +85,6 @@
       filter: blur(2px);
       animation: floatParticle linear infinite;
     }
-
     @keyframes floatParticle {
       0% { transform: translateY(0) translateX(0); opacity: 0.3; }
       50% { transform: translateY(-20px) translateX(5px); opacity: 0.6; }
@@ -97,7 +102,7 @@
       background-image: var(--vine-url);
       background-repeat: repeat-y;
       background-size: 120px auto;
-      z-index: -1;
+      z-index: -2;
       filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
       opacity: 0.9;
     }
@@ -117,15 +122,16 @@
     }
 
     .panel {
-      background: rgba(0,0,0,0.7);
-      border: 4px solid #3a3a3a;
+      background: rgba(0,0,0,0.65);
+      border: 4px solid #2a2a2a;
       padding: 32px 36px;
       max-width: 700px;
       text-align: center;
       color: #d0d0d0;
-      box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.2) inset;
+      box-shadow: 0 0 40px rgba(0,0,0,0.9), 0 0 60px rgba(255,180,100,0.1) inset;
       image-rendering: pixelated;
       animation: floatPanel 6s ease-in-out infinite;
+      border-radius: 8px;
     }
 
     @keyframes floatPanel {
@@ -134,7 +140,7 @@
       100% { transform: translateY(0); }
     }
 
-    h1 { margin-top: 0; font-size: 2.2rem; color: #7cff7c; text-shadow: 0 0 6px rgba(0,255,0,0.3); }
+    h1 { margin-top: 0; font-size: 2.2rem; color: #7cff7c; text-shadow: 0 0 8px rgba(0,255,0,0.4); }
     .tagline { font-size: 1.1rem; margin-bottom: 16px; color: #bbb; }
     .info { font-size: 1rem; line-height: 1.6; margin-bottom: 18px; color: #ccc; }
     .discord {
@@ -150,7 +156,7 @@
     }
     .discord:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(74,163,255,0.9), inset 0 0 10px rgba(0,0,0,0.6);
+      box-shadow: 0 0 14px rgba(74,163,255,0.9), inset 0 0 10px rgba(0,0,0,0.6);
     }
     .footer { margin-top: 18px; font-size: 0.85rem; opacity: 0.6; }
 
@@ -165,7 +171,7 @@
       background: rgba(0,0,0,0.75);
       color: #eee;
       padding: 10px 14px;
-      border: 3px solid #3a3a3a;
+      border: 3px solid #2a2a2a;
       border-right: none;
       cursor: pointer;
       z-index: 10;
@@ -175,7 +181,6 @@
       font-weight: bold;
       box-shadow: 0 0 8px rgba(0,0,0,0.7);
     }
-
     .rules-panel {
       position: fixed;
       top: 0;
@@ -183,14 +188,13 @@
       width: 320px;
       height: 100%;
       background: rgba(0,0,0,0.85);
-      border-left: 4px solid #3a3a3a;
+      border-left: 4px solid #2a2a2a;
       padding: 24px;
       color: #ddd;
       transition: right 0.35s ease;
       z-index: 9;
       box-shadow: -10px 0 25px rgba(0,0,0,0.8);
     }
-
     .rules-container:hover .rules-panel,
     .rules-container:hover .rules-tab { right: 0; }
 
@@ -206,7 +210,9 @@
   <!-- Layers -->
   <div class="background"></div>
   <div class="gloom-overlay"></div>
-  <div class="fog"></div>
+  <div class="fog-layer"></div>
+  <div class="fog-layer"></div>
+  <div class="fog-layer"></div>
   <div class="vines left"></div>
   <div class="vines right"></div>
 
