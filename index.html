@@ -7,8 +7,8 @@
 
   <style>
     :root {
-      --brick-url: url("https://minecraft.wiki/images/Mossy_Stone_Bricks_%28texture%29_JE3_BE2.png?7159b");
-      --vine-url: url("https://minecraft.wiki/images/Cave_Vines_%28berries%2C_plant_texture%29_JE2.png?5a2ee");
+      --brick-url: url("https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/2f/Mossy_Stone_Bricks.png");
+      --vine-url: url("https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3d/Vines.png");
     }
 
     * {
@@ -140,6 +140,64 @@
       font-size: 0.85rem;
       opacity: 0.7;
     }
+
+    /* =========================
+       Slide-Out Rules Panel
+       ========================= */
+    .rules-tab {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.85);
+      color: #eee;
+      padding: 10px 14px;
+      border: 3px solid #5a5a5a;
+      border-right: none;
+      cursor: pointer;
+      z-index: 10;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 2px;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+
+    .rules-panel {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 320px;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      border-left: 4px solid #5a5a5a;
+      padding: 24px;
+      color: #ddd;
+      transition: right 0.35s ease;
+      z-index: 9;
+      box-shadow: -10px 0 25px rgba(0,0,0,0.8);
+    }
+
+    .rules-container:hover .rules-panel,
+    .rules-container:hover .rules-tab {
+      right: 0;
+    }
+
+    .rules-panel h2 {
+      margin-top: 0;
+      color: #7cff7c;
+      text-align: center;
+    }
+
+    .rules-panel ul {
+      padding-left: 18px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .rules-panel li {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -150,6 +208,22 @@
   <div class="lighting"></div>
   <div class="vines left"></div>
   <div class="vines right"></div>
+
+  <!-- Slide-Out Rules -->
+  <div class="rules-container">
+    <div class="rules-tab">RULES</div>
+    <div class="rules-panel">
+      <h2>📜 Server Rules</h2>
+      <ul>
+        <li>Be respectful — no harassment or hate speech.</li>
+        <li>No griefing, stealing, or destroying builds.</li>
+        <li>No cheating, exploits, or hacked clients.</li>
+        <li>Keep chat friendly and appropriate.</li>
+        <li>Listen to staff and follow instructions.</li>
+        <li>Have fun and play fair.</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Content -->
   <div class="card">
